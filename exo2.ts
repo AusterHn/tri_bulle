@@ -143,7 +143,7 @@ ctx.font = "15px serif"
 
 //fonction d'affichage de l'algorithme
 function displayAlgorithm() {
-    const algoX = 270, algoY = 20
+    const algoX = 270, algoY = 50
     const algoDY = 30
 
     ctx.textAlign = "left"
