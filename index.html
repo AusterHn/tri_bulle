@@ -1,0 +1,30 @@
+<!--Auteurs: Codjo AMOUSSOUVI, Aristippe HANOU, Victor SAUTEJEAU-->
+
+<!--Page html de l'exercice 2 : tri à bulle-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri à bulle</title>
+    <link rel="stylesheet" href="style2.css" /> 
+</head>
+<body>
+    <h2>Simulation de l'algorithme de tri à bulle</h4>
+    <div>
+        <canvas id="simulation" width="500" height="500"
+                style="border: 1px solid black">
+        </canvas><br>
+        <label><input id="taille_tableau" type="number">Taille du tableau</label><br>
+        <label>Vitesse de la simmulation<input id="vitesse_simulation" type="range" min="1" max="20"></label><br>
+        <div id="ctrl">
+            <button id="initialiser">Réinitialisation de la simulation</button><br>
+            <button id="un_pas">Faire un pas</button><br>
+            <button id="continuer">Continuer la simulation</button><br>
+            <button id="stop">Stopper la simulation</button>
+        </div>
+    </div>
+    <script src="exo2.js"></script>
+</body>
+</html>

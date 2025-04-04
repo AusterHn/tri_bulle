@@ -1,0 +1,72 @@
+/*Codjo AMOUSSOUVI - Aristippe HANOU - Victor SAUTEJEAU*/
+
+body{
+    color: black;
+    background :linear-gradient(to right, Black, rgb(117, 160, 164), Black);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2{
+    font-size: 30px;
+    font-family: monospace;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 1%;
+}
+
+button{
+    background-color: beige;
+    color: black;
+    text-align: center;
+    font-family: 'monospace', Times, serif;
+    font-size: 20px;
+    width: 250px;
+    height: 60px;
+    border-radius: 10px;
+    margin: 2%;
+}
+
+#ctrl{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+canvas{
+    margin-top: 1%;
+    background-color: beige;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#taille_tableau{
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: beige;
+    color: black;
+    outline: none;
+}
+
+#vitesse_simulation{
+    width: 150px;
+    height: 10px;
+    border-radius: 5px;
+    background: beige;
+    outline: none;
+    transition: 0.2s;
+}
