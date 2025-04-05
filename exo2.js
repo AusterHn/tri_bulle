@@ -145,15 +145,15 @@ function displayAlgorithm() {
         var y = algoY + i * algoDY;
         if (machine_ligneCourante == i + 1) {
             //mettre la police d'écriture en gras
-            ctx.font = "bold 16px Arial";
+            ctx.font = "bold 18px Arial";
             //Calcul de la longueur de la ligne de l'ago
             //afin de pouvoir ajuster la longueur du rectange
             var textWidth = ctx.measureText(algo[i]).width;
-            // Dessiner un rectangle rouge derrière le texte courant.
+            // Dessiner un rectangle à bordure rouge derrière le texte courant.
             ctx.strokeStyle = "red";
             ctx.lineWidth = 5;
             ctx.strokeRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
-            ctx.fillStyle = "black"; // Texte en blanc pour contraste
+            ctx.fillStyle = "red"; // Texte en rouge 
         }
         else {
             ctx.fillStyle = "black"; // Texte normal en noir
