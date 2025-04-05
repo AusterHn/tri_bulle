@@ -21,9 +21,9 @@ var algo = [
 //Déclaration de la variable qui contiendra le numéro de la ligne de l'algo qui s'exécute
 var machine_ligneCourante = 0; //commence à 0 parceque la simulation n'a pas encore débuté
 var machine_t = [];
-var machine_trié = NaN;
-var machine_i = NaN;
-var machine_n = NaN;
+var machine_trié = false;
+var machine_i = 0;
+var machine_n = 0;
 //initialisation d'une machine
 function initialiserVM(tailleTableau) {
     //initialisation des variables du programme
