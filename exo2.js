@@ -133,7 +133,7 @@ var ctx = canvas.getContext("2d");
 ctx.font = "15px serif";
 //fonction d'affichage de l'algorithme
 function displayAlgorithm() {
-    var algoX = 270, algoY = 50;
+    var algoX = 250, algoY = 50;
     var algoDY = 30;
     ctx.textAlign = "left";
     //affichage de l'algorithme
