@@ -145,7 +145,7 @@ function displayAlgorithm() {
         var y = algoY + i * algoDY;
         if (machine_ligneCourante == i + 1) {
             //mettre la police d'écriture en gras
-            ctx.font = "bold 18px Arial";
+            ctx.font = "bold 16px Arial";
             //Calcul de la longueur de la ligne de l'ago
             //afin de pouvoir ajuster la longueur du rectange
             var textWidth = ctx.measureText(algo[i]).width;
