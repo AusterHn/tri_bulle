@@ -262,7 +262,7 @@ function simContinue() {
     //on multiplie par 1000 puisque le champ pour la vitesse de simulation de type "range"
     //a pour valeur minimum min=1 et pour valeur maximum max=20
     //l'intervalle de valeur ici représente donc des millisecondes d'exécution
-    //il faut donc les multiplier par 1000 pour avoir des secondes d'exécution plus raisonnables
+    //il faut donc les multiplier par 500 pour avoir des secondes d'exécution plus raisonnables
     var vitesse = parseFloat(champVitesseSim.value) * 500;
     if (!simArrete) {
         makeaStep();
