@@ -133,7 +133,7 @@ var ctx = canvas.getContext("2d");
 ctx.font = "15px serif";
 //fonction d'affichage de l'algorithme
 function displayAlgorithm() {
-    var algoX = 250, algoY = 50;
+    var algoX = 260, algoY = 50;
     var algoDY = 30;
     ctx.textAlign = "left";
     //affichage de l'algorithme
@@ -153,7 +153,7 @@ function displayAlgorithm() {
             ctx.strokeStyle = "red";
             ctx.lineWidth = 5;
             ctx.strokeRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
-            ctx.fillStyle = "red"; // Texte en rouge 
+            ctx.fillStyle = "black"; // Texte en noir 
         }
         else {
             ctx.fillStyle = "black"; // Texte normal en noir
