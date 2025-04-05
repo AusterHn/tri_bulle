@@ -150,9 +150,9 @@ function displayAlgorithm() {
             //afin de pouvoir ajuster la longueur du rectange
             var textWidth = ctx.measureText(algo[i]).width;
             // Dessiner un rectangle à bordure rouge derrière le texte courant.
-            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
             ctx.lineWidth = 5;
-            ctx.strokeRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
+            ctx.fillRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
             ctx.fillStyle = "black"; // Texte en noir 
         }
         else {
