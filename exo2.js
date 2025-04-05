@@ -1,5 +1,4 @@
 "use strict";
-//Auteurs: Codjo AMOUSSOUVI, Aristippe HANOU, Victor SAUTEJEAU
 //Exercice 2: Tri à bulle
 //Ce programme fait la simulation d'un algorithme
 //qui range les nombres d'un tableau dans l'ordre croissant
