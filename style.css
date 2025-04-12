@@ -51,15 +51,12 @@ div{
 }
 
 #taille_tableau{
-    width: 80px;
-    height: 30px;
-    font-size: 16px;
-    text-align: center;
-    border: 2px solid black;
+    width: 150px;
+    height: 10px;
     border-radius: 5px;
-    background-color: beige;
-    color: black;
+    background: beige;
     outline: none;
+    transition: 0.2s;
 }
 
 #vitesse_simulation{

@@ -133,7 +133,7 @@ var ctx = canvas.getContext("2d");
 ctx.font = "15px serif";
 //fonction d'affichage de l'algorithme
 function displayAlgorithm() {
-    var algoX = 270, algoY = 50;
+    var algoX = 760, algoY = 100;
     var algoDY = 30;
     ctx.textAlign = "left";
     //affichage de l'algorithme
@@ -147,13 +147,13 @@ function displayAlgorithm() {
             //mettre la police d'écriture en gras
             ctx.font = "bold 16px Arial";
             //Calcul de la longueur de la ligne de l'ago
-            //afin de pouvoir ajuster la longueur du rectange
+            //afin de pouvoir ajuster la longueur du rectangle
             var textWidth = ctx.measureText(algo[i]).width;
             // Dessiner un rectangle rouge derrière le texte courant.
-            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
             ctx.lineWidth = 5;
-            ctx.strokeRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
-            ctx.fillStyle = "black"; // Texte en blanc pour contraste
+            ctx.fillRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
+            ctx.fillStyle = "black"; // Texte en noir dans le rectangle à bordure rouge
         }
         else {
             ctx.fillStyle = "black"; // Texte normal en noir
@@ -168,12 +168,15 @@ function displayVar(x, y, val, title) {
     var varDX = 50, varDY = 30;
     var valVarDX = 25, valVarDY = 20;
     var titleVarDX = 25, titleVarDY = 47;
+    //Dessin d'un rectangle à bordure noir
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
     ctx.strokeRect(x, y, varDX, varDY);
+    //La valeur de la variable est écrite en bleu dans le rectangle 
     ctx.textAlign = "center";
     ctx.fillStyle = "blue";
     ctx.fillText(val, x + valVarDX, y + valVarDY);
+    //le nom de la variable est écrit en vert en dessous du rectangle
     ctx.fillStyle = "green";
     ctx.fillText(title, x + titleVarDX, y + titleVarDY);
 }
@@ -183,27 +186,28 @@ function displayVM() {
     var max_heigth = 330;
     var coeff = 3; //représente le coefficient
     //affichage de toutes les variables du programme
-    displayVar(70, 430, String(machine_ligneCourante), "Ligne");
-    displayVar(170, 430, String(machine_i), "i");
-    displayVar(270, 430, String(machine_n), "n");
-    displayVar(370, 430, String(machine_trié), "trié");
+    displayVar(320, 430, String(machine_ligneCourante), "Ligne");
+    displayVar(420, 430, String(machine_i), "i");
+    displayVar(520, 430, String(machine_n), "n");
+    displayVar(620, 430, String(machine_trié), "trié");
     //affiche des cellules du tableau t
     for (var i = 0; i < machine_t.length; i++) {
         // Calcul de la largeur de chaque bande
-        var width_1 = 170 / machine_t.length; // Espace total divisé par le nombre d'éléments
+        var width_1 = 680 / machine_t.length; // Espace total divisé par le nombre d'éléments
         // Calcul de la hauteur proportionnelle
         var height = Math.min(machine_t[i] * coeff, max_heigth);
         // Calcul des coordonnées x et y
-        var x = 50 + i * width_1; // Position x en fonction de l'index i
+        var x = 40 + i * width_1; // Position x en fonction de l'index i
         var y = 330 - height; // Pour que le rectangle "monte" depuis la base 380
         // Dessiner le rectangle
         ctx.strokeRect(x, y, width_1, height);
         // Ajouter le texte centré sur le rectangle
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "green";
         ctx.font = "16px Arial";
         ctx.textAlign = "center";
-        ctx.strokeText(machine_t[i].toString(), x + width_1 / 2, y + height / 2);
-        ctx.strokeText("t[" + (i + 1) + "]", x + width_1 / 2, 360);
+        ctx.fillText(machine_t[i].toString(), x + width_1 / 2, y + height / 2);
+        ctx.fillStyle = "black";
+        ctx.fillText("t[" + (i + 1) + "]", x + width_1 / 2, 360);
     }
 }
 //fonction qui redessime complètement le canva
@@ -260,11 +264,10 @@ boutonBreak.addEventListener("click", stop);
 //fonction qui effectue la simulation continue
 function simContinue() {
     //variable qui récupère la vitesse d'exécution de la simulation
-    //on multiplie par 1000 puisque le champ pour la vitesse de simulation de type "range"
-    //a pour valeur minimum min=1 et pour valeur maximum max=20
+    //a pour valeur minimum min=1000 et pour valeur maximum max=10000
     //l'intervalle de valeur ici représente donc des millisecondes d'exécution
-    //il faut donc les multiplier par 1000 pour avoir des secondes d'exécution plus raisonnables
-    var vitesse = parseFloat(champVitesseSim.value) * 500;
+    //ce qui représente un intervalle de 1 sec à 10 sec
+    var vitesse = parseFloat(champVitesseSim.value);
     if (!simArrete) {
         makeaStep();
         refreshCanevas();
