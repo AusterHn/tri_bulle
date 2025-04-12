@@ -1,5 +1,4 @@
 "use strict";
-//Auteurs: Codjo AMOUSSOUVI, Aristippe HANOU, Victor SAUTEJEAU
 //Exercice 2: Tri à bulle
 //Ce programme fait la simulation d'un algorithme
 //qui range les nombres d'un tableau dans l'ordre croissant
@@ -133,7 +132,7 @@ var ctx = canvas.getContext("2d");
 ctx.font = "15px serif";
 //fonction d'affichage de l'algorithme
 function displayAlgorithm() {
-    var algoX = 760, algoY = 100;
+    var algoX = 270, algoY = 50;
     var algoDY = 30;
     ctx.textAlign = "left";
     //affichage de l'algorithme
@@ -150,10 +149,10 @@ function displayAlgorithm() {
             //afin de pouvoir ajuster la longueur du rectangle
             var textWidth = ctx.measureText(algo[i]).width;
             // Dessiner un rectangle rouge derrière le texte courant.
-            ctx.fillStyle = "red";
+            ctx.strokeStyle = "red";
             ctx.lineWidth = 5;
-            ctx.fillRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
-            ctx.fillStyle = "black"; // Texte en noir dans le rectangle à bordure rouge
+            ctx.strokeRect(algoX - 5, y - 18, textWidth + 10, 24); // Rectangle ajusté à la taille du texte
+            ctx.fillStyle = "black"; // Texte en blanc pour contraste
         }
         else {
             ctx.fillStyle = "black"; // Texte normal en noir
@@ -266,8 +265,8 @@ function simContinue() {
     //variable qui récupère la vitesse d'exécution de la simulation
     //a pour valeur minimum min=1000 et pour valeur maximum max=10000
     //l'intervalle de valeur ici représente donc des millisecondes d'exécution
-    //ce qui représente un intervalle de 1 sec à 10 sec
-    var vitesse = parseFloat(champVitesseSim.value);
+    //il faut donc les multiplier par 1000 pour avoir des secondes d'exécution plus raisonnables
+    var vitesse = parseFloat(champVitesseSim.value) * 500;
     if (!simArrete) {
         makeaStep();
         refreshCanevas();
