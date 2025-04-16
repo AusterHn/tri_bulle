@@ -1,17 +1,18 @@
 "use strict";
-//Auteurs: Codjo AMOUSSOUVI, Aristippe HANOU, Victor SAUTEJEAU
-//Exercice 2: Tri à bulle
 //Ce programme fait la simulation d'un algorithme
 //qui range les nombres d'un tableau dans l'ordre croissant
 // suivant la méthode du tri à bulle
 //Tableau donnant les lignes de l'algorithme simulé
 //Permet d'afficher l'algorithme dans la visualisation
+//Petite modification de l'algorithme à la ligne 5:
+//La conditionnelle doit être une stricte comparaison (donc Si t[i] > t[i+1])
+//Risque de boucle infinie dans le cas il y a deux valeurs égales dans le tableau et la conditionnelle est (supérieur ou égale)
 var algo = [
     "1: trié = faux",
     "2: Tant que trié est faux faire",
     "3:     trié = vrai",
     "4:     Pour i de 1 à n-1 faire",
-    "5:         Si t[i]>=t[i+1] alors",
+    "5:         Si t[i]>t[i+1] alors",
     "6:             Echanger t[i] et t[i+1]",
     "7:             trié = faux",
     "8:         Fin si",
@@ -24,6 +25,7 @@ var machine_t = [];
 var machine_trié = false;
 var machine_i = 0;
 var machine_n = 0;
+var case_active = 0;
 //initialisation d'une machine
 function initialiserVM(tailleTableau) {
     //initialisation des variables du programme
@@ -78,7 +80,7 @@ function makeaStep() {
     }
     else if (machine_ligneCourante == 5) {
         //corrrespond à la conditionnelle de comparaison entre les valeurs i et i+1 du tableau
-        if (machine_t[machine_i - 1] >= machine_t[machine_i]) {
+        if (machine_t[machine_i - 1] > machine_t[machine_i]) {
             machine_ligneCourante = 6;
         }
         else {
@@ -89,6 +91,7 @@ function makeaStep() {
         //correspond à l'échange des valeurs t[i] et t[i+1] si la condition (supérieur ou égale) est vérifié
         echanger(machine_t, machine_i - 1, machine_i);
         machine_ligneCourante = 7;
+        case_active = machine_i;
     }
     else if (machine_ligneCourante == 7) {
         machine_trié = false;
@@ -200,13 +203,22 @@ function displayVM() {
         var x = 40 + i * width_1; // Position x en fonction de l'index i
         var y = 330 - height; // Pour que le rectangle "monte" depuis la base 380
         // Dessiner le rectangle
-        ctx.strokeRect(x, y, width_1, height);
+        //Si le rectangle correspond à la cellule active, alors elle est dessiner en rouge (rectangle plein)
+        if (i === case_active && 4 <= machine_ligneCourante && machine_ligneCourante <= 9) {
+            ctx.fillStyle = "red";
+            ctx.fillRect(x, y, width_1, height);
+        }
+        //Sinon, les autres cellules sont donc des rectangles à bordures simples
+        else {
+            ctx.strokeRect(x, y, width_1, height);
+        }
         // Ajouter le texte centré sur le rectangle
-        ctx.fillStyle = "green";
-        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.font = "bold 16px Arial";
         ctx.textAlign = "center";
         ctx.fillText(machine_t[i].toString(), x + width_1 / 2, y + height / 2);
         ctx.fillStyle = "black";
+        ctx.font = "16px Arial";
         ctx.fillText("t[" + (i + 1) + "]", x + width_1 / 2, 360);
     }
 }
@@ -231,7 +243,7 @@ var simArrete = true;
 //fonction qui initialise la machine virtuelle
 function reinit() {
     simArrete = true;
-    //récupération de la taille du tablea
+    //récupération de la taille du tableau
     var nb = parseInt(champTailleTab.value, 10);
     //si l'utilisateur ne rentre pas une taille ou rentre un taille inférieur à 1,
     //alors le programme génère aléatoirement une taille comprise entre 1 et 20
